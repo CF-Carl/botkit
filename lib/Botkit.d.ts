@@ -338,7 +338,8 @@ declare namespace botkit {
     unfurl_links?: boolean;
     unfurl_media?: boolean;
     username?: string;
-    channel_type?: "group" | "channel" | "im"
+    channel_type?: "group" | "channel" | "im",
+    command?: string;
   }
   interface SlackSpawnConfiguration {
     token: string;
