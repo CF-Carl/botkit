@@ -340,6 +340,35 @@ declare namespace botkit {
     username?: string;
     channel_type?: "group" | "channel" | "im",
     command?: string;
+    blocks?: SlackMessageBlock[];
+    message?: SlackMessage;
+  }
+  interface SlackMessageBlock {
+    type: string;
+    block_id?: string;
+  }
+  interface SlackMessageSectionBlock extends SlackMessageBlock {
+    text: SlackMessageBlockText;
+    accessory?: SlackMessageBlockElement;
+  }
+  interface SlackMessageContextBlock extends SlackMessageBlock {
+    elements: SlackMessageBlockText[];  // TODO Incorporate Images
+  }
+  interface SlackMessageActionBlock extends SlackMessageBlock {
+    elements: SlackMessageBlockElement[];
+  }
+  interface SlackMessageBlockText {
+    type: string;
+    text: string;
+    emoji?: boolean;
+  }
+  interface SlackMessageBlockElement {
+    type: string;
+  }
+  interface SlackMessageBlockButtonElement extends SlackMessageBlockElement {
+    action_id: string;
+    text: SlackMessageBlockText;
+    value?: string;
   }
   interface SlackSpawnConfiguration {
     token: string;
