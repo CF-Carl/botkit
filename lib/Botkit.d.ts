@@ -87,8 +87,12 @@ declare namespace botkit {
       users: Storage<User>;
       channels: Storage<Channel>;
       teams: Storage<Team>;
+      misc: Storage<Misc>;
     };
     studio_token?: string;
+  }
+  interface Misc {
+    id: string;
   }
   interface ConsoleBot extends Bot<ConsoleSpawnConfiguration, ConsoleMessage> {
   }
@@ -123,6 +127,7 @@ declare namespace botkit {
       users: Storage<User>;
       channels: Storage<Channel>;
       teams: Storage<Team>;
+      misc: Storage<Misc>;
     };
     readonly studio: Studio<S, M, B>;
     changeEars(new_test: HearsFunction<M>): void;
