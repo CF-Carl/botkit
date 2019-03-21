@@ -347,6 +347,12 @@ declare namespace botkit {
     command?: string;
     blocks?: SlackMessageBlock[];
     message?: SlackMessage;
+    actions?: SlackMessageAction[];
+  }
+  interface SlackMessageAction {
+    block_id: string;
+    action_id: string;
+    value: string;
   }
   interface SlackMessageBlock {
     type: string;
