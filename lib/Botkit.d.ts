@@ -1,5 +1,5 @@
 import * as express from 'express';
-import * as http from "http"
+import * as http from "http";
 
 declare namespace botkit {
   function slackbot(configuration: SlackConfiguration): SlackController;
@@ -302,7 +302,7 @@ declare namespace botkit {
     sendWebhook(options: SlackMessage, cb: (err: string, body: any) => void): void;
     startPrivateConversation(message: SlackMessage & { user: string; }, cb: (err: Error, convo: Conversation<SlackMessage>) => void): void;
     startConversationInThread(src: SlackMessage, cb: (err: Error, res: string) => void): void;
-    startRTM(cb?: (err: string, bot: SlackBot, payload: any) => void): SlackBot;
+	startRTM(cb?: (err: string, bot: SlackBot, payload: any) => void): SlackBot;
   }
   interface SlackConfiguration extends Configuration {
     api_root?: string;
@@ -329,7 +329,8 @@ declare namespace botkit {
     getAuthorizeURL(team_id: string, redirect_params: any): string;
   }
   interface SlackMessage extends Message {
-    attachments?: SlackAttachment[];
+	attachments?: SlackAttachment[];
+	delete_original?: string;
     icon_emoji?: string;
     icon_url?: string;
     link_names?: boolean;
@@ -347,7 +348,8 @@ declare namespace botkit {
     command?: string;
     blocks?: SlackMessageBlock[];
     message?: SlackMessage;
-    actions?: SlackMessageAction[];
+	actions?: SlackMessageAction[];
+	user_id?: string;
   }
   interface SlackMessageAction {
     block_id: string;
@@ -378,8 +380,9 @@ declare namespace botkit {
   }
   interface SlackMessageBlockButtonElement extends SlackMessageBlockElement {
     action_id: string;
-    text: SlackMessageBlockText;
-    value?: string;
+	text: SlackMessageBlockText;
+	style?: string;
+	value?: string;
   }
   interface SlackSpawnConfiguration {
     token: string;
